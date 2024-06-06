@@ -1,67 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Darshan</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>Code Darshan - Enlightening Minds with the Power of Code</title>
+    <meta
+      name="description"
+      content="Code Darshan is a platform dedicated to enlightening minds with the power of code. Stay tuned for more updates!"
+    />
+    <meta
+      name="keywords"
+      content="Code Darshan,codedarshan, coding, programming, technology, learning, education"
+    />
+    <meta name="author" content="Code Darshan Team" />
+    <link rel="canonical" href="https://codedarshan.com" />
+    <link rel="icon" type="image/x-icon" href="./favicon.png" />
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #f0f0f0;
-            font-family: sans-serif;
-            padding: 0;
-        }
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        font-family: sans-serif;
+        padding: 0;
+      }
 
-        canvas {
-            display: block;
-        }
+      canvas {
+        display: block;
+      }
 
-        #info {
-            position: absolute;
-            bottom: 15px;
-            left: 36vw;
-            font-family: 'Courier New', Courier, monospace;
-            color: #999;
-            font-size: 0.86em;
-        }
+      #info {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Courier New", Courier, monospace;
+        color: #999;
+        font-size: 0.86em;
+        text-align: center;
+      }
     </style>
-</head>
-<body>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Code Darshan",
+        "url": "https://codedarshan.com",
+        "logo": "https://codedarshan.com/logo.png",
+        "description": "Code Darshan is a platform dedicated to enlightening minds with the power of code. Stay tuned for more updates!"
+      }
+    </script>
+  </head>
+  <body>
+    <div id="info">
+      <h1>Enlightening minds with power of code</h1>
+    </div>
 
-<div id="info">
-    <h1>Enlightening minds with power of code</h1>
-</div>
+    <script type="module">
+      import * as THREE from "https://cdn.skypack.dev/three@0.131.3";
+      import { OrbitControls } from "https://cdn.skypack.dev/three@0.131.3/examples/jsm/controls/OrbitControls.js";
 
-<script type="module">
-    import * as THREE from 'https://cdn.skypack.dev/three@0.131.3';
-    import { OrbitControls } from 'https://cdn.skypack.dev/three@0.131.3/examples/jsm/controls/OrbitControls.js';
+      // Scene, camera, renderer
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
 
-    // Scene, camera, renderer
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+      // Controls
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 0.8;
 
-    // Controls
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.8;
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0x404040);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+      directionalLight.position.set(1, 2, 1);
+      scene.add(ambientLight, directionalLight);
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0x404040);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(1, 2, 1);
-    scene.add(ambientLight, directionalLight);
-
-    // Text geometry
-    const fontLoader = new THREE.FontLoader();
-    fontLoader.load('https://cdn.skypack.dev/three@0.131.3/examples/fonts/helvetiker_bold.typeface.json', function (font) {
-
-        const textOptions = {
+      // Text geometry
+      const fontLoader = new THREE.FontLoader();
+      fontLoader.load(
+        "https://cdn.skypack.dev/three@0.131.3/examples/fonts/helvetiker_bold.typeface.json",
+        function (font) {
+          const textOptions = {
             font: font,
             size: 2,
             height: 1,
@@ -70,44 +101,68 @@
             bevelThickness: 0.1,
             bevelSize: 0.1,
             bevelOffset: 0,
-            bevelSegments: 5
-        };
+            bevelSegments: 5,
+          };
 
-        // "Coming Soon" text
-        const comingSoonGeometry = new THREE.TextGeometry('COMING SOON', textOptions);
-        const comingSoonMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff }); 
-        const comingSoonMesh = new THREE.Mesh(comingSoonGeometry, comingSoonMaterial);
-        comingSoonMesh.position.y = 2; 
-        comingSoonMesh.position.x = -8;
-        scene.add(comingSoonMesh);
+          // "Coming Soon" text
+          const comingSoonGeometry = new THREE.TextGeometry(
+            "COMING SOON",
+            textOptions
+          );
+          const comingSoonMaterial = new THREE.MeshPhongMaterial({
+            color: 0xffffff,
+          });
+          const comingSoonMesh = new THREE.Mesh(
+            comingSoonGeometry,
+            comingSoonMaterial
+          );
+          comingSoonGeometry.computeBoundingBox();
+          const comingSoonCenterOffset =
+            -0.5 *
+            (comingSoonGeometry.boundingBox.max.x -
+              comingSoonGeometry.boundingBox.min.x);
+          comingSoonMesh.position.set(comingSoonCenterOffset, 2, 0);
+          scene.add(comingSoonMesh);
 
-        // "Code Darshan" text
-        const codeDarshanGeometry = new THREE.TextGeometry('Code Darshan', textOptions);
-        const codeDarshanMaterial = new THREE.MeshPhongMaterial({ color: 0x0071c5 });
-        const codeDarshanMesh = new THREE.Mesh(codeDarshanGeometry, codeDarshanMaterial);
-        codeDarshanMesh.position.y = -3; 
-        codeDarshanMesh.position.x = -4;
-        scene.add(codeDarshanMesh);
-    });
+          // "Code Darshan" text
+          const codeDarshanGeometry = new THREE.TextGeometry(
+            "Code Darshan",
+            textOptions
+          );
+          const codeDarshanMaterial = new THREE.MeshPhongMaterial({
+            color: 0x0071c5,
+          });
+          const codeDarshanMesh = new THREE.Mesh(
+            codeDarshanGeometry,
+            codeDarshanMaterial
+          );
+          codeDarshanGeometry.computeBoundingBox();
+          const codeDarshanCenterOffset =
+            -0.5 *
+            (codeDarshanGeometry.boundingBox.max.x -
+              codeDarshanGeometry.boundingBox.min.x);
+          codeDarshanMesh.position.set(codeDarshanCenterOffset, -3, 0);
+          scene.add(codeDarshanMesh);
+        }
+      );
 
-    // Camera position
-    camera.position.z = 20;
+      // Camera position
+      camera.position.z = 20;
 
-    // Animation loop
-    function animate() {
+      // Animation loop
+      function animate() {
         requestAnimationFrame(animate);
         controls.update();
         renderer.render(scene, camera);
-    }
-    animate();
+      }
+      animate();
 
-    // Responsive resizing
-    window.addEventListener('resize', () => {
+      // Responsive resizing
+      window.addEventListener("resize", () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-</script>
-
-</body>
+      });
+    </script>
+  </body>
 </html>
