@@ -18,80 +18,7 @@
     <meta name="author" content="Code Darshan Team" />
     <link rel="canonical" href="https://codedarshan.com" />
     <link rel="icon" type="image/x-icon" href="./favicon.png" />
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-        background-color: #f0f0f0;
-        font-family: sans-serif;
-        padding: 0;
-      }
 
-      canvas {
-        display: block;
-      }
-
-      #info {
-        position: absolute;
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-family: "Courier New", Courier, monospace;
-        color: #999;
-        font-size: 0.86em;
-        text-align: center;
-      }
-
-      /* Form styles */
-      form {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        max-height: 80%;
-        overflow-y: auto;
-        width: 90%;
-        max-width: 500px;
-      }
-
-      label {
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-
-      input, textarea, button {
-        display: block;
-        width: 100%;
-        margin-bottom: 15px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-        font-size: 16px;
-      }
-
-      textarea {
-        resize: vertical;
-      }
-
-      button {
-        background-color: #0071c5;
-        color: white;
-        border: none;
-        padding: 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 18px;
-      }
-
-      button:hover {
-        background-color: #005ea6;
-      }
-    </style>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -103,35 +30,92 @@
       }
     </script>
   </head>
-  <body>
-    <div id="info">
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+     <div id="info">
       <h1>Enlightening minds with power of code</h1>
     </div>
 
-    <form action="save_form.php" method="post" enctype="multipart/form-data">
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" required>
-      
-      <label for="feedback">Feedback *</label>
-      <textarea id="feedback" name="feedback" required></textarea>
-      
-      <label for="suggestion">Something you would like to see on CodeDarshan *</label>
-      <textarea id="suggestion" name="suggestion" required></textarea>
-      
-      <label>Do you want to work with CodeDarshan? *</label>
-      <input type="radio" id="yes" name="work_with_code_darshan" value="Yes" required>
-      <label for="yes">Yes</label>
-      <input type="radio" id="no" name="work_with_code_darshan" value="No" required>
-      <label for="no">No</label>
-      
-      <label for="resume">Resume (PDF, Word, JPG) *</label>
-      <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.jpg,.jpeg" required>
-      
-      <label for="role">Role *</label>
-      <input type="text" id="role" name="role" required>
-      
-      <button type="submit">Submit</button>
-    </form>
+      <form
+        action="save_form.php"
+        method="post"
+        enctype="multipart/form-data"
+        class="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg max-w-md w-full overflow-y-auto"
+        style="max-height: 80%;"
+      >
+        <h2 class="text-2xl font-bold mb-4 text-center">CodeDarshan</h2>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email *</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="mt-1 mb-4 p-2 w-full border border-gray-300 rounded-md"
+        />
+        
+        <label for="feedback" class="block text-sm font-medium text-gray-700">Feedback *</label>
+        <textarea
+          id="feedback"
+          name="feedback"
+          required
+          class="mt-1 mb-4 p-2 w-full border border-gray-300 rounded-md"
+        ></textarea>
+        
+        <label for="suggestion" class="block text-sm font-medium text-gray-700">Something you would like to see on CodeDarshan *</label>
+        <textarea
+          id="suggestion"
+          name="suggestion"
+          required
+          class="mt-1 mb-4 p-2 w-full border border-gray-300 rounded-md"
+        ></textarea>
+        
+        <fieldset class="mb-4">
+          <legend class="block text-sm font-medium text-gray-700 mb-2">Do you want to work with CodeDarshan? *</legend>
+          <div class="flex items-center">
+            <input
+              type="radio"
+              id="yes"
+              name="work_with_code_darshan"
+              value="Yes"
+              required
+              class="mr-2"
+            />
+            <label for="yes" class="mr-4">Yes</label>
+            <input
+              type="radio"
+              id="no"
+              name="work_with_code_darshan"
+              value="No"
+              required
+              class="mr-2"
+            />
+            <label for="no">No</label>
+          </div>
+        </fieldset>
+        
+        <label for="resume" class="block text-sm font-medium text-gray-700">Resume (PDF, Word, JPG) *</label>
+        <input
+          type="file"
+          id="resume"
+          name="resume"
+          accept=".pdf,.doc,.docx,.jpg,.jpeg"
+          required
+          class="mt-1 mb-4 p-2 w-full border border-gray-300 rounded-md"
+        />
+        
+        <label for="role" class="block text-sm font-medium text-gray-700">Role *</label>
+        <input
+          type="text"
+          id="role"
+          name="role"
+          required
+          class="mt-1 mb-6 p-2 w-full border border-gray-300 rounded-md"
+        />
+        
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 rounded-md text-lg hover:bg-blue-700"
+        >Submit</button>
+      </form>
 
     <script type="module">
       import * as THREE from "https://cdn.skypack.dev/three@0.131.3";
